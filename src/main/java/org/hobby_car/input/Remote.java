@@ -53,4 +53,15 @@ public class Remote {
   public void setTurningRight(boolean turningRight) {
     isTurningRight = turningRight;
   }
+
+  @Override
+  public String toString() {
+    return "Remote{" +
+        "isForward=" + isForward +
+        ", isAccelerating=" + isAccelerating +
+        ", isBraking=" + isBraking +
+        ", isTurningLeft=" + isTurningLeft +
+        ", isTurningRight=" + isTurningRight +
+        '}';
+  }
 }

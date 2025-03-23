@@ -17,11 +17,11 @@ public class EncodedMotor {
     this.angle = angle;
   }
 
-  private void rotateLeft() {
+  public void rotateLeft() {
     angle--;
   }
 
-  private void rotateRight() {
+  public void rotateRight() {
     angle++;
   }
 }

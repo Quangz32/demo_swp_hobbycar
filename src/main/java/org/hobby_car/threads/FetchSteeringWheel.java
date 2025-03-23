@@ -5,15 +5,17 @@ import java.awt.event.KeyListener;
 import org.hobby_car.DriverSimulation;
 import org.hobby_car.const1.Const;
 import org.hobby_car.input.ChangeModeButton;
+import org.hobby_car.input.SteeringWheel;
+import org.hobby_car.input.Switch;
 
-public class FetchChangeModeButton extends Thread {
-  private final ChangeModeButton changeModeButton;
+public class FetchSteeringWheel extends Thread {
+  private final SteeringWheel input;
   private DriverSimulation simulation;
 
-  public FetchChangeModeButton(
-      ChangeModeButton changeModeButton,
+  public FetchSteeringWheel(
+      SteeringWheel input,
       DriverSimulation simulation) {
-    this.changeModeButton = changeModeButton;
+    this.input = input;
     this.simulation = simulation;
   }
 
@@ -21,9 +23,9 @@ public class FetchChangeModeButton extends Thread {
   public void run() {
     while (true){
 
-        boolean newValue = simulation.getChangeModeButton().isManual();
-        changeModeButton.setManual(newValue);
-//        System.out.println("new ChangeModeBtton: " + newValue);
+      float newValue = simulation.getSteeringWheel().getRotation();
+      input.setRotation(newValue);
+//      System.out.println("new Switch: " + newValue);
 
       try {
         Thread.sleep(Const.DELAY);
