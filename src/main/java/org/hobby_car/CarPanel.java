@@ -91,5 +91,14 @@ public class CarPanel extends JPanel {
     g2d.setFont(new Font("Arial", Font.PLAIN, 14));
     g2d.drawString(String.format("Position: (%.2f, %.2f)", x, y), 10, 20);
     g2d.drawString(String.format("Heading: %.2f°", heading), 10, 40);
+
+    // Vẽ camera khi xe lùi
+    if (!isForward) {
+      g2d.setColor(Color.GREEN);
+      g2d.fillRect(getWidth() - 100, 20, 180, 100);
+      g2d.setColor(Color.BLACK);
+      g2d.setFont(new Font("Arial", Font.BOLD, 16));
+      g2d.drawString("CAMERA", getWidth() - 90, 55);
+    }
   }
 }
