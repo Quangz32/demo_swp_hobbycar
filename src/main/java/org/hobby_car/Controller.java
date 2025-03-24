@@ -64,16 +64,21 @@ public class Controller {
 //    thread7.start();
 
     // Chạy vòng lặp trong một thread mới
+    boolean logging = false;
     new Thread(() -> {
       while (true) {
-        // Thực hiện các cập nhật và in ra thông tin
-        System.out.println("Mode - isManual : " + changeModeButton.isManual());
-        System.out.println("Swith - isFoward : " + _switch.isForward());
-        System.out.println("Accelerating -  : " + acceleratorPedal.isAccelerating());
-        System.out.println("Braking -  : " + brakePedal.isBraking());
-        System.out.println("Steering Wheel -  : " + steeringWheel.getRotation());
-        System.out.println("Remote -  : " + remote.toString());
-        System.out.println("....");
+
+        if (logging){
+          // Thực hiện các cập nhật và in ra thông tin
+          System.out.println("Mode - isManual : " + changeModeButton.isManual());
+          System.out.println("Swith - isFoward : " + _switch.isForward());
+          System.out.println("Accelerating -  : " + acceleratorPedal.isAccelerating());
+          System.out.println("Braking -  : " + brakePedal.isBraking());
+          System.out.println("Steering Wheel -  : " + steeringWheel.getRotation());
+          System.out.println("Remote -  : " + remote.toString());
+          System.out.println("....");
+        }
+
 
         if (changeModeButton.isManual()) {
           brake.setWorking(brakePedal.isBraking());
@@ -92,12 +97,14 @@ public class Controller {
           dcMotor.setRunning(!remote.isBraking() && remote.isAccelerating());
         }
 
-        // In ra trạng thái của các thiết bị
-        System.out.println("Brake - working: " + brake.isWorking());
-        System.out.println("Camera - woking: " + camera.isWorking());
-        System.out.println("Encoded Motor - Angle: " + encodedMotor.getAngle());
-        System.out.println("DC Motor - runnig: " + dcMotor.isRunning());
-        System.out.println("==========");
+        if (logging){
+          // In ra trạng thái của các thiết bị
+          System.out.println("Brake - working: " + brake.isWorking());
+          System.out.println("Camera - woking: " + camera.isWorking());
+          System.out.println("Encoded Motor - Angle: " + encodedMotor.getAngle());
+          System.out.println("DC Motor - running: " + dcMotor.isRunning());
+          System.out.println("==========");
+        }
 
         try {
           Thread.sleep(Const.DELAY);
