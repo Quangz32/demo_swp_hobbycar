@@ -37,6 +37,9 @@ public class InfoPanel extends JPanel {
     g.drawString("Manual Control Simulation Info:", 10, y);
     y += lineHeight;
 
+    g.drawString("================", 10, y);
+    y += lineHeight;
+
     g.drawString("Is Forward: " + isForward, 10, y);
     y += lineHeight;
 
@@ -47,6 +50,9 @@ public class InfoPanel extends JPanel {
     y += lineHeight;
 
     g.drawString("Steering Wheel Rotation: " + steeringWheelRotation, 10, y);
+    y += lineHeight;
+
+    g.drawString("================", 10, y);
     y += lineHeight;
 
     g.drawString("Is Camera Working: " + isCameraWorking, 10, y);
