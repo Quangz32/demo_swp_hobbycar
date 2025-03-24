@@ -9,7 +9,7 @@ public class InfoPanel extends JPanel {
 
   public InfoPanel(Controller controller) {
     this.controller = controller;
-    setPreferredSize(new Dimension(300, 200)); // Adjust size as needed
+    setPreferredSize(new Dimension(200, 200)); // Adjust size as needed
   }
 
   @Override

@@ -83,7 +83,7 @@ public class Controller {
         if (changeModeButton.isManual()) {
           brake.setWorking(brakePedal.isBraking());
           camera.setWorking(!_switch.isForward());
-          encodedMotor.setAngle(45 * steeringWheel.getRotation());
+          encodedMotor.setAngle(30 * steeringWheel.getRotation());
           dcMotor.setRunning(!brakePedal.isBraking() && acceleratorPedal.isAccelerating());
         } else {
           brake.setWorking(remote.isBraking());

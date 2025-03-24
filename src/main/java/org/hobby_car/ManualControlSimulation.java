@@ -47,11 +47,15 @@ public class ManualControlSimulation extends JFrame implements KeyListener {
     setTitle("Manual Control Simulation");
     setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLayout(new BorderLayout()); // Use BorderLayout for better layout management
+    setLayout(new BorderLayout()); // Use BorderLayout for layout management
 
     // Add the InfoPanel
     InfoPanel infoPanel = new InfoPanel(controller);
-    add(infoPanel, BorderLayout.WEST); // Add it to the left side
+    add(infoPanel, BorderLayout.WEST); // Add InfoPanel to the left side
+
+    // Add the CarPanel
+    CarPanel carPanel = new CarPanel(controller);
+    add(carPanel, BorderLayout.CENTER); // Add CarPanel to the center/right side
 
     // Other setup
     addKeyListener(this);
@@ -61,13 +65,16 @@ public class ManualControlSimulation extends JFrame implements KeyListener {
 
     setupUpdateTimer();
 
-    // Update the panel periodically
-    Timer refreshPanelTimer = new Timer(20, e -> infoPanel.repaint());
-    refreshPanelTimer.start();
+    // Update the panels periodically
+    Timer refreshPanelsTimer = new Timer(10, e -> {
+      infoPanel.repaint();
+      carPanel.repaint();
+    });
+    refreshPanelsTimer.start();
   }
 
   private void setupUpdateTimer() {
-    updateTimer = new Timer(20, e -> {
+    updateTimer = new Timer(10, e -> {
       updateSimulation();
       fetchCarStatic();
 
@@ -163,13 +170,13 @@ public class ManualControlSimulation extends JFrame implements KeyListener {
   private void updateSimulation() {
     // Điều chỉnh góc bánh lái dựa trên phím mũi tên
     if (keyPressed[KeyEvent.VK_RIGHT]) {
-      if (aSteeringWheelRotation <= 0.95){
-        aSteeringWheelRotation += 0.05F;
+      if (aSteeringWheelRotation <= 0.9){
+        aSteeringWheelRotation += 0.01F;
       }
     }
     if (keyPressed[KeyEvent.VK_LEFT]) {
-      if (aSteeringWheelRotation >= -0.95){
-        aSteeringWheelRotation -= 0.05F;
+      if (aSteeringWheelRotation >= -0.9){
+        aSteeringWheelRotation -= 0.01F;
       }
     }
 
