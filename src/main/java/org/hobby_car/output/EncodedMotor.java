@@ -18,10 +18,10 @@ public class EncodedMotor {
   }
 
   public void rotateLeft() {
-    angle--;
+    angle-=5;
   }
 
   public void rotateRight() {
-    angle++;
+    angle+=5;
   }
 }
